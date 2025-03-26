@@ -1,3 +1,7 @@
+/**
+ * A map that associates English number words with their numerical values.
+ * Used for converting word-based numbers into numeric representations.
+ */
 val americanNumberSystem = mutableMapOf(
     "one" to 1,
     "two" to 2,
@@ -34,8 +38,15 @@ val americanNumberSystem = mutableMapOf(
     "and" to -1
 )
 
+/** List of words representing decimal digits (0-9). */
 val decimalWords = listOf("zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
 
+/**
+ * Converts a list of number words into its corresponding numeric value.
+ *
+ * @param numberWords A list of words representing a number (e.g., ["two", "hundred", "thirty"]).
+ * @return The numerical value represented by the words.
+ */
 fun numberFormation(numberWords: List<String>): Long{
     if(numberWords.isEmpty()){
         return 0L
@@ -84,6 +95,12 @@ fun numberFormation(numberWords: List<String>): Long{
     return totalValue
 }
 
+/**
+ * Converts a list of decimal digit words into a decimal number.
+ *
+ * @param decimalDigitWord A list of words representing decimal digits (e.g., ["one", "two", "five"] for 0.125).
+ * @return The decimal representation or `null` if the input is invalid.
+ */
 fun getDecimalSum(decimalDigitWord: List<String>): Double? {
     val decimalNumberStr = StringBuilder("0.")
 
@@ -97,6 +114,16 @@ fun getDecimalSum(decimalDigitWord: List<String>): Double? {
     return decimalNumberStr.toString().toDoubleOrNull()
 }
 
+/**
+ * Computes the numeric sum of word-based numbers, considering billion, million, and thousand separations.
+ *
+ * @param cleanNumbers A list of words representing a whole number.
+ * @param billionIndex Index of "billion" in the list, or -1 if not present.
+ * @param millionIndex Index of "million" in the list, or -1 if not present.
+ * @param thousandIndex Index of "thousand" in the list, or -1 if not present.
+ * @param cleanDecimalNumbers A list of words representing the decimal portion.
+ * @return The computed numeric value as a `Double`.
+ */
 fun calculateSum(cleanNumbers: List<String>, billionIndex: Int, millionIndex: Int, thousandIndex: Int, cleanDecimalNumbers: List<String>): Double {
     if (cleanNumbers.isEmpty()){ // Change to 0.0
         return 0.0
@@ -149,6 +176,13 @@ fun calculateSum(cleanNumbers: List<String>, billionIndex: Int, millionIndex: In
     return totalSum
 }
 
+/**
+ * Converts a word-based number representation into a numerical value.
+ *
+ * @param numberSentence A string containing a number in words (e.g., "two million twenty-three thousand and forty-nine").
+ * @return The corresponding numerical value, either as `Int` or `Double` if a decimal part is present.
+ * @throws IllegalArgumentException If the input is invalid or malformed.
+ */
 fun wordToNum(numberSentence: String): Number {
     val numberSentence = numberSentence.replace('-', ' ').lowercase()
 
@@ -203,20 +237,4 @@ fun wordToNum(numberSentence: String): Number {
     val wholePart = calculateSum(cleanNumbers, billionIndex, millionIndex, thousandIndex, listOf())
     val decimalPart = getDecimalSum(cleanDecimalNumbers) ?: 0.0
     return wholePart + decimalPart
-}
-
-fun main(){
-    println(wordToNum("Eighteen"))
-    println(wordToNum("Four"))
-    println(wordToNum("Eighty five"))
-    println(wordToNum("Four hundred and two"))
-
-    println("STRESS TESTS:")
-
-    println(wordToNum("Three point one"))
-    println(wordToNum("Five million four thousand two hundred and fourteen"))
-    println(wordToNum("six hundred twenty five"))
-    println(wordToNum("million million")) //should break after this frfr
-    println(wordToNum("Hello, World!"))
-
 }
