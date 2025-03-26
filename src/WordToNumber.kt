@@ -70,13 +70,10 @@ fun numberFormation(numberWords: List<String>): Long{
             }
             value in 1L..99L ->{
                 if(currentValue >= 100L){
-                    // If current value is already a hundreds value, add this as the last two digits
                     currentValue += value
                 } else if(currentValue in 1L..99L){
-                    // If current value is already a two-digit number, combine them
-                    currentValue = currentValue * 10L + value
+                    currentValue = currentValue + value  // Not *10L, just add
                 } else{
-                    // Otherwise, set as the current value
                     currentValue = value
                 }
             }
@@ -100,10 +97,12 @@ fun getDecimalSum(decimalDigitWord: List<String>): Double? {
     return decimalNumberStr.toString().toDoubleOrNull()
 }
 
-fun calculateSum(cleanNumbers: List<String>, billionIndex: Int, millionIndex: Int, thousandIndex: Int, cleanDecimalNumbers: List<String>): Long {
-    if (cleanNumbers.isEmpty()) return 0
+fun calculateSum(cleanNumbers: List<String>, billionIndex: Int, millionIndex: Int, thousandIndex: Int, cleanDecimalNumbers: List<String>): Double {
+    if (cleanNumbers.isEmpty()){ // Change to 0.0
+        return 0.0
+    }
 
-    var totalSum: Long = 0
+    var totalSum: Double = 0.0  // Change to Double
 
     // Handle billion
     if(billionIndex > -1){
@@ -141,19 +140,22 @@ fun calculateSum(cleanNumbers: List<String>, billionIndex: Int, millionIndex: In
     totalSum += numberFormation(remainingPart) ?: 0
 
     // Handle decimal numbers if present
+    // Handle decimal numbers if present
     if(cleanDecimalNumbers.isNotEmpty()){
         val decimalPart = getDecimalSum(cleanDecimalNumbers) ?: 0.0
-        totalSum += decimalPart.toLong()
+        return totalSum.toDouble() + decimalPart  // Return a double instead of adding as long
     }
 
     return totalSum
 }
 
-fun wordToNum(numberSentence: String): Long {
+fun wordToNum(numberSentence: String): Number {
     val numberSentence = numberSentence.replace('-', ' ').lowercase()
 
-    if(numberSentence.toIntOrNull() != null){
-        return numberSentence.toInt().toLong()
+    // If it's a pure numeric string, return as whole number or decimal
+    val numericParse = numberSentence.toDoubleOrNull()
+    if (numericParse != null) {
+        return if (numericParse.toInt().toDouble() == numericParse) numericParse.toInt() else numericParse
     }
 
     val splitWords = numberSentence.split(" ")
@@ -192,5 +194,29 @@ fun wordToNum(numberSentence: String): Long {
         throw IllegalArgumentException("Malformed number!")
     }
 
-    return calculateSum(cleanNumbers, billionIndex, millionIndex, thousandIndex, cleanDecimalNumbers)
+    // If no decimal part, return as whole number
+    if(cleanDecimalNumbers.isEmpty()){
+        return calculateSum(cleanNumbers, billionIndex, millionIndex, thousandIndex, cleanDecimalNumbers).toInt()
+    }
+
+    // If decimal part exists, combine whole and decimal parts
+    val wholePart = calculateSum(cleanNumbers, billionIndex, millionIndex, thousandIndex, listOf())
+    val decimalPart = getDecimalSum(cleanDecimalNumbers) ?: 0.0
+    return wholePart + decimalPart
+}
+
+fun main(){
+    println(wordToNum("Eighteen"))
+    println(wordToNum("Four"))
+    println(wordToNum("Eighty five"))
+    println(wordToNum("Four hundred and two"))
+
+    println("STRESS TESTS:")
+
+    println(wordToNum("Three point one"))
+    println(wordToNum("Five million four thousand two hundred and fourteen"))
+    println(wordToNum("six hundred twenty five"))
+    println(wordToNum("million million")) //should break after this frfr
+    println(wordToNum("Hello, World!"))
+
 }
