@@ -41,7 +41,7 @@ println(wordToNumber("Hello, World!"))
 
 ## Problems
 
-If you find any errors or bugs with the code, raise an issue through [Github](https://github.com/Tomasz0720/WordToNumberForKotlin.git). You can also email [tomaszapuzio@gmail.com](mailto:tomaszapuzio@gmail.com).
+If you find any errors or bugs with the code, raise an issue through [Github](https://github.com/Tomasz0720/WordToNumberForKotlin.git). You can also email [tomaszapuzio@gmail.com](mailto:tomaszapuzio@gmail.com) directly.
 
 ## Contributers
 
