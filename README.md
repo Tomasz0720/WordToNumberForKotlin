@@ -37,3 +37,13 @@ println(wordToNumber("million million"))
 
 println(wordToNumber("Hello, World!"))
 // Output: No valid number words found! Please enter a valid number word (e.g., two million twenty three thousand and forty nine)
+```
+
+## Problems
+
+If you find any errors or bugs with the code, raise an issue through [Github](). You can also email [tomaszapuzio@gmail.com](mailto:tomaszapuzio@gmail.com).
+
+## Contributers
+
+Tomasz Puzio [(Tomasz0720)]()
+
