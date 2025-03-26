@@ -13,26 +13,27 @@ WordToNumber for Kotlin is a conversion of Python's [word2number](https://pypi.o
 
 You can use the `wordToNumber` function to convert numbers.
 
-`println(wordToNumber("Four")`
-> Prints `4` to the console.
+```kotlin
+println(wordToNumber("Four"))
+// Output: 4
 
-`println(wordToNumber("Eighteen")`
-> Prints `18` to the console.
+println(wordToNumber("Eighteen"))
+// Output: 18
 
-`println(wordToNumber("Three point one")`
-> Prints `3.1` to the console.
+println(wordToNumber("Three point one"))
+// Output: 3.1
 
-`println(wordToNumber("Seventy six")`
-> Prints `76` to the console.
+println(wordToNumber("Seventy six"))
+// Output: 76
 
-`println(wordToNumber("Four hundred and two")`
-> Prints `402` to the console.
+println(wordToNumber("Four hundred and two"))
+// Output: 402
 
-`println(wordToNumber("Five million four thousand two hundred and fourteen")`
-> Prints `5004214` to the console.
+println(wordToNumber("Five million four thousand two hundred and fourteen"))
+// Output: 5004214
 
-`println(wordToNumber("million million")`
-> Prints `Redundant number word! Please enter a valid number word (eg. two million twenty three thousand and forty nine)` to the console.
+println(wordToNumber("million million"))
+// Output: Redundant number word! Please enter a valid number word (e.g., two million twenty three thousand and forty nine)
 
-`println(wordToNumber("Hello, World!")`
-> Prints `No valid number words found! Please enter a valid number word (eg. two million twenty three thousand and forty nine)` to the console.
+println(wordToNumber("Hello, World!"))
+// Output: No valid number words found! Please enter a valid number word (e.g., two million twenty three thousand and forty nine)
