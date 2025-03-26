@@ -9,11 +9,10 @@ WordToNumber for Kotlin is a conversion of Python's [word2number](https://pypi.o
 
 ## Usage
 
-```kotlin
-println(wordToNum("Four")
->>4
+*Library functionality is coming soon*
 
-println(wordToNum("Eighty five")
->>85
+You can use the `wordToNumber` function to convert numbers.
 
-println(wordToNum("Four hundred and two")
+`println(wordToNumber("Four")`
+> Prints `4` to the console.
+
