@@ -16,3 +16,23 @@ You can use the `wordToNumber` function to convert numbers.
 `println(wordToNumber("Four")`
 > Prints `4` to the console.
 
+`println(wordToNumber("Eighteen")`
+> Prints `18` to the console.
+
+`println(wordToNumber("Three point one")`
+> Prints `3.1` to the console.
+
+`println(wordToNumber("Seventy six")`
+> Prints `76` to the console.
+
+`println(wordToNumber("Four hundred and two")`
+> Prints `402` to the console.
+
+`println(wordToNumber("Five million four thousand two hundred and fourteen")`
+> Prints `5004214` to the console.
+
+`println(wordToNumber("million million")`
+> Prints `Redundant number word! Please enter a valid number word (eg. two million twenty three thousand and forty nine)` to the console.
+
+`println(wordToNumber("Hello, World!")`
+> Prints `No valid number words found! Please enter a valid number word (eg. two million twenty three thousand and forty nine)` to the console.
