@@ -9,9 +9,25 @@ WordToNumber for Kotlin is a conversion of Python's [word2number](https://pypi.o
 
 ## Usage
 
-*Library functionality is coming soon*
+### Maven
 
-You can use the `wordToNumber` function to convert numbers.
+Add the following to your ```pom.xml``` file,
+```
+<dependency>
+  <groupId>com.Tomasz0720</groupId>
+  <artifactId>wordtonumberforkotlin</artifactId>
+  <version>1.1.1</version>
+</dependency>
+```
+
+Then run,
+```
+mvn install
+```
+
+## Examples
+
+Use the `wordToNumber` function,
 
 ```kotlin
 println(wordToNumber("Four"))
@@ -41,7 +57,9 @@ println(wordToNumber("Hello, World!"))
 
 ## Problems
 
-If you find any errors or bugs with the code, raise an issue through [Github](https://github.com/Tomasz0720/WordToNumberForKotlin.git). You can also email [tomaszapuzio@gmail.com](mailto:tomaszapuzio@gmail.com) directly.
+If you find a bug or something doesn't work as expected,
+- Open an issue on [Github](https://github.com/Tomasz0720/WordToNumberForKotlin.git)
+- Or email me directly at [tomaszapuzio@gmail.com](mailto:tomaszapuzio@gmail.com)
 
 ## Contributers
 
